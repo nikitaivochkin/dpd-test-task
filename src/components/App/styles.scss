@@ -1,0 +1,8 @@
+@import 'styles/config/includes';
+
+$b: table-section;
+
+.#{$b} {
+  position: relative;
+  padding: 0 2rem;
+}

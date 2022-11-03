@@ -1,0 +1,72 @@
+@import 'styles/config/includes';
+
+$b: my-table;
+
+.#{$b} {
+  position: relative;
+  width: 100%;
+
+  margin-bottom: 2rem;
+
+  border-spacing: 0;
+  border-top: 1px solid $table-border-color;
+  border-bottom: 1px solid $table-border-color;
+
+
+  thead {
+    background-color: $table-head-bg-color;
+  }
+
+  tbody {
+    tr {
+      transition: background-color 150ms linear;
+
+      &:hover {
+        background-color: $table-hover-bg-color;
+      }
+    }
+  }
+
+  th {
+    text-align: left;
+  }
+
+  th, td {
+    padding: 0.5rem;
+    border-top: 1px solid $table-border-color;
+    border-bottom: 1px solid $table-border-color;
+  }
+
+  .cell {
+    position: relative;
+
+    &__container {
+      width: 100%;
+      height: 100%;
+    }
+
+    &_img {
+      text-align: center;
+
+      .cell__container {
+        width: 5rem;
+        height: auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0 auto;
+      }
+      
+      img {
+        @include imgSize;
+        border-radius: 9999px;
+      }
+    }
+
+    &_gender {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@import 'styles/config/includes';
+
+$b: pagination;
+
+.#{$b} {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__element {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+
+    border: 1px solid;
+    margin: 0 7px;
+
+    cursor: pointer;
+    transition: color 150ms linear, background-color 150ms linear;
+
+    &:hover {
+      color: white;
+      background-color: black;
+    }
+
+    &_active {
+      color: white;
+      background-color: black;
+    }
+
+    &_next, &_prev {
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &_next {
+      &::before {
+        content: '>';
+      }
+    }
+
+    &_prev {
+      &::before {
+        content: '<';
+      }
+    }
+  }
+}
