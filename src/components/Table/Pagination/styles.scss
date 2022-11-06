@@ -2,13 +2,35 @@
 
 $b: pagination;
 
+@mixin el-size {
+  width: 2rem;
+  height: 2rem;
+}
+
+@mixin el-styles {
+  color: black;
+  background-color: white;
+  border-radius: 3px;
+
+  border: 1px solid;
+}
+
 .#{$b} {
-  position: relative;
+  position: sticky;
+  bottom: 0;
+
   width: 100%;
+
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
+
+  background-color: white;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  z-index: 2;
 
   &__container {
     display: flex;
@@ -19,18 +41,13 @@ $b: pagination;
 
   &__element {
     position: relative;
-    width: 2rem;
-    height: 2rem;
+    @include el-size;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    color: black;
-    background-color: white;
-    border-radius: 3px;
-
-    border: 1px solid;
+    @include el-styles;
     margin: 0 7px;
 
     cursor: pointer;
@@ -44,6 +61,12 @@ $b: pagination;
     &_active {
       color: white;
       background-color: black;
+    }
+
+    &_disabled {
+      pointer-events: none;
+      cursor: default;
+      opacity: 0.3;
     }
 
     &_next, &_prev {
@@ -65,6 +88,44 @@ $b: pagination;
       &::before {
         content: '<';
       }
+    }
+  }
+
+  input {
+    position: relative;
+    @include el-size;
+    width: 3rem;
+
+    text-align: center;
+
+    @include el-styles;
+
+    margin: 0 7px;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  &__points {
+    position: relative;
+    @include el-size;
+
+    &::before {
+      content: "...";
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      line-height: 3px;
     }
   }
 }

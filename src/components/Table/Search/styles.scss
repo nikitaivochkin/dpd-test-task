@@ -1,0 +1,19 @@
+@import 'styles/config/includes';
+
+$b: table-search;
+
+.#{$b} {
+  position: sticky;
+  top: 0;
+
+  background-color: white;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  z-index: 2;
+
+  input {
+    margin-left: 0.5rem;
+  }
+}

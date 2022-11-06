@@ -1,6 +1,6 @@
 @import 'styles/config/includes';
 
-$b: my-table;
+$b: users-table;
 
 .#{$b} {
   position: relative;
@@ -8,10 +8,12 @@ $b: my-table;
 
   margin-bottom: 2rem;
 
-  border-spacing: 0;
-  border-top: 1px solid $table-border-color;
-  border-bottom: 1px solid $table-border-color;
-
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-top: 1px solid $table-border-color;
+    border-bottom: 1px solid $table-border-color;
+  }
 
   thead {
     background-color: $table-head-bg-color;
@@ -61,11 +63,17 @@ $b: my-table;
       
       img {
         @include imgSize;
+        min-width: 72px;
+        min-height: 72px;
         border-radius: 9999px;
       }
     }
 
     &_gender {
+      text-align: center;
+    }
+
+    &_no-data {
       text-align: center;
     }
   }

@@ -4,10 +4,12 @@ import { Status } from 'types';
 
 import { getRequest } from 'utils/api';
 
+const usersRequestPath = process.env.NODE_ENV === 'production' ? '' : '/users';
+
 export const getUsers = createAsyncThunk(
   'users/getUsers',
   async () => {
-    const res = await getRequest('/users');
+    const res = await getRequest(usersRequestPath);
 
     return res.data.results;
   },

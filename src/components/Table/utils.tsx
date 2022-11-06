@@ -8,7 +8,10 @@ export const columnTypes: ColumnTypes = {
     <span>{ value }</span>
   ),
   img: (link: string) => (
-    <img src={link} alt="avatar" />
+    <img
+      src={link}
+      alt="avatar"
+    />
   ),
   link: (link: string) => (
     <a

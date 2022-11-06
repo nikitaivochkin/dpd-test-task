@@ -10,6 +10,9 @@ back:
 build:
 	npm run build
 
+serve:
+	npm run serve:build
+
 deploy:
 	npm run deploy
 

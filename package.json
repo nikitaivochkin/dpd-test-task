@@ -16,6 +16,12 @@
     "cors": "^2.8.5",
     "dayjs": "^1.11.6",
     "express": "^4.18.2",
+    "lodash.chunk": "^4.2.0",
+    "lodash.has": "^4.5.2",
+    "lodash.inrange": "^3.3.6",
+    "lodash.noop": "^3.0.1",
+    "lodash.omitby": "^4.6.0",
+    "lodash.pick": "^4.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
@@ -26,8 +32,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:backend": "concurrently 'react-scripts start' 'node backend/index.js'",
+    "start:backend": "concurrently 'react-scripts start' 'node public/backend/index.js'",
     "build": "react-scripts build",
+    "serve:build": "serve ./build --single --debug -p 8080",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "react-scripts build && mv build/index.html build/200.html && surge build dpd-test-task-react-redux-ts.surge.sh"
@@ -51,6 +58,12 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash.chunk": "^4.2.7",
+    "@types/lodash.has": "^4.5.7",
+    "@types/lodash.inrange": "^3.3.7",
+    "@types/lodash.noop": "^3.0.7",
+    "@types/lodash.omitby": "^4.6.7",
+    "@types/lodash.pick": "^4.4.7",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.26.0",

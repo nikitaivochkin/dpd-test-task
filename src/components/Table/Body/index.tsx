@@ -10,11 +10,28 @@ type TBodyProps = {
 const THead: React.FC<TBodyProps> = (props: TBodyProps) => {
   const { data, columns } = props;
 
+  const isNoData = !data.length;
+
+  if (isNoData) {
+    return (
+      <tbody>
+        <tr>
+          <td
+            colSpan={columns.length}
+            className="cell cell_no-data"
+          >
+            There is no data =(
+          </td>
+        </tr>
+      </tbody>
+    );
+  }
+
   return (
     <tbody>
       {
         data.map((user) => (
-          <tr key={user.id}>
+          <tr key={`${user.id}${user.phone}`}>
             {
                 columns.map(({ dataIndex, type, name }) => (
                   <td

@@ -1,4 +1,5 @@
 import Table from 'components/Table';
+import Loader from 'components/ui/Loader';
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'store';
 import { getUsers } from 'store/slices/users';
@@ -13,9 +14,9 @@ const App: React.FC = () => {
   const getUserListStatus = useAppSelector((state) => state.users.status);
 
   const isNone = getUserListStatus === 'none';
-  // const isRequested = getUserListStatus === 'requested';
-  // const isSuccess = getUserListStatus === 'success';
-  // const isFailed = getUserListStatus === 'failed';
+  const isRequested = getUserListStatus === 'requested';
+  const isSuccess = getUserListStatus === 'success';
+  const isFailed = getUserListStatus === 'failed';
 
   const hasUsers = !!userList.length;
 
@@ -26,6 +27,13 @@ const App: React.FC = () => {
   }, []);
 
   const columns: Array<TableColumn> = [
+    {
+      name: '№',
+      dataIndex: 'order',
+      key: 'order',
+      type: 'string',
+      width: 30,
+    },
     {
       name: 'Avatar',
       dataIndex: 'avatar',
@@ -70,7 +78,7 @@ const App: React.FC = () => {
     },
   ];
 
-  const normalizedData: Array<User> = userList.map((user) => {
+  const normalizedData: Array<User> = userList.map((user, i) => {
     const {
       id: { value },
       picture: { medium },
@@ -83,6 +91,7 @@ const App: React.FC = () => {
     } = user;
 
     return {
+      order: i + 1,
       id: value,
       avatar: medium,
       name: `${first} ${last}`,
@@ -97,15 +106,33 @@ const App: React.FC = () => {
   return (
     <section className="table-section">
       <h1>Users</h1>
-      <div className="table">
-        <Table
-          columns={columns}
-          data={normalizedData.slice(0, 5)}
-          pagination={{
-            total: normalizedData.length,
-          }}
-        />
-      </div>
+      {
+        (isNone || isRequested) && (
+          <Loader />
+        )
+      }
+
+      {
+        isSuccess && (
+          <div className="table">
+            <Table
+              columns={columns}
+              data={normalizedData}
+              pagination={{
+                perPage: 10,
+              }}
+            />
+          </div>
+        )
+      }
+
+      {
+        isFailed && (
+          <div>
+            Something went wrong ;(
+          </div>
+        )
+      }
     </section>
   );
 };

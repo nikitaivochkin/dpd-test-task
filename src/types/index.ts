@@ -19,6 +19,7 @@ export type TableColumn = {
   dataIndex: string,
   key: string | number,
   type: 'string' | 'link' | 'email' | 'phone' | 'img' | 'date',
+  width?: string | number,
 };
 
 export type ColumnTypes = {

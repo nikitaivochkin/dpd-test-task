@@ -9,10 +9,9 @@
 ### Commands
   - dev mode - `make dev`
   - production build - `make build`
+  - serve production build - `make serve`
   - deploy - `make deploy`
   - lint - `make lint`
-
-**Fake api by [jsonplaceholder](https://jsonplaceholder.typicode.com/)**
 
 ### [Link to app](https://dpd-test-task-react-redux-ts.surge.sh/)*
 
