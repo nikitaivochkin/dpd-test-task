@@ -8,7 +8,7 @@ import React, {
 import inRange from 'lodash.inrange';
 import noop from 'lodash.noop';
 import cx from 'classnames';
-import { buildURL, createArray } from 'utils';
+import { createArray } from 'utils';
 
 import './styles.scss';
 

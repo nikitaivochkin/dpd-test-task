@@ -1,7 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
 import chunk from 'lodash.chunk';
 import pick from 'lodash.pick';
-import has from 'lodash.has';
 
 import { TableColumn } from 'types';
 
