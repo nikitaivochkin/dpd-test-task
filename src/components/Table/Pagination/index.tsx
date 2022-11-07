@@ -36,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const { current } = settings;
 
   const startIndex = 1;
-  const numOfPaginButtons = startIndex + 4;
+  const numOfPaginButtons = 5;
 
   const jumperRef = useRef<HTMLInputElement | null>(null);
 
@@ -52,12 +52,14 @@ const Pagination: React.FC<PaginationProps> = ({
   const inMiddle = inRange(current, numOfPaginButtons, chunks - numOfPaginButtons + 2);
   const inEnd = inRange(current, chunks - numOfPaginButtons + 2, chunks + 1);
 
+  console.log('render Pagin');
+
   useEffect(() => {
     if (inStart) {
       setSliceParams(defaultSliceParams);
     } else if (inMiddle) {
       const start = current - 3;
-      const end = start + 5;
+      const end = current + 2;
 
       setSliceParams([start, end]);
     } else {
@@ -86,10 +88,6 @@ const Pagination: React.FC<PaginationProps> = ({
 
     onChange({ ...settings, current: inRange(n, chunks + 1) ? n : 1 });
   };
-
-  // useEffect(() => {
-  //   onChange({ ...settings, current });
-  // }, []);
 
   const prevBtnClassNames = cx({
     pagination__element: true,

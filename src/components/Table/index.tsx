@@ -38,6 +38,16 @@ const Table: React.FC<TableProps> = ({
   const chunkedData = chunk(filtredData, settings.perPage);
   const currentChunk = chunkedData[settings.current - 1] ?? [];
 
+  useLayoutEffect(() => {
+    const { location: { search } } = window;
+    const urlParams = new URLSearchParams(search.substr(1));
+
+    const serchParams = pick(Object.fromEntries(urlParams), ['search', 'current']);
+
+    setSearchValue(serchParams.search || '');
+    setSetting({ ...settings, current: Number(serchParams.current) || defaultSettings.current });
+  }, []);
+
   const handleSearch = (v: string) => {
     setSetting({ ...settings, current: 1 });
     setSearchValue(v);
@@ -49,16 +59,6 @@ const Table: React.FC<TableProps> = ({
     setSetting(newSettings);
     buildURL({ current: String(newSettings.current) });
   };
-
-  useLayoutEffect(() => {
-    const { location: { search } } = window;
-    const urlParams = new URLSearchParams(search.substr(1));
-
-    const serchParams = pick(Object.fromEntries(urlParams), ['search', 'current']);
-
-    setSearchValue(serchParams.search || '');
-    setSetting({ ...settings, current: Number(serchParams.current) || defaultSettings.current });
-  }, []);
 
   return (
     <>
